@@ -50,8 +50,15 @@ final class CatalogController extends BaseController
 
         (new PrivateFileStorage())->assertPrivatePath($file['storage_path']);
 
+        $contents = file_get_contents($file['storage_path']);
+        if ($contents === false) {
+            throw PageNotFoundException::forPageNotFound('Pré-visualização indisponível.');
+        }
+
         return $this->response
-            ->download($file['storage_path'], null)
-            ->setContentType($file['mime_type']);
+            ->setContentType($file['mime_type'])
+            ->setHeader('Content-Length', (string) strlen($contents))
+            ->setHeader('Cache-Control', 'public, max-age=3600')
+            ->setBody($contents);
     }
 }
