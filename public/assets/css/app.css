@@ -29,6 +29,20 @@ button, .button { border: 0; border-radius: .5rem; background: #172033; color: #
 .purchase-box { background: #fff; border: 1px solid #dce2ec; border-radius: 1rem; display: grid; gap: .8rem; padding: 1.25rem; }
 .purchase-box strong { font-size: 1.75rem; }
 .purchase-box small { color: #52627a; }
+.price-free { color: #168044; }
+.home-page { max-width: 78rem; }
+.hero { background: linear-gradient(135deg, #dce8ff, #f7f9fd); border-radius: 1.5rem; padding: 4rem; }
+.hero h1 { font-size: clamp(2.5rem, 6vw, 5rem); max-width: 48rem; margin: .5rem 0 1rem; }
+.hero p:not(.eyebrow) { font-size: 1.15rem; max-width: 38rem; margin-bottom: 2rem; }
+.home-section { margin-top: 4rem; }
+.section-heading { align-items: end; display: flex; justify-content: space-between; gap: 1rem; margin-bottom: 1.25rem; }
+.section-heading h2 { margin: .25rem 0 0; }
+.section-heading a { color: #2254a2; font-weight: 700; text-decoration: none; }
+.model-card h3 { margin: .5rem 0; font-size: 1.2rem; }
+.custom-request { background: #172033; border-radius: 1rem; color: #fff; margin-top: 4rem; padding: 2.5rem; }
+.custom-request .eyebrow { color: #b9c9e8; }
+.custom-request h2 { max-width: 42rem; }
+.custom-request .button { background: #fff; color: #172033; }
 @media (max-width: 720px) { .search-form div, .model-detail__grid { display: block; } .search-form button { margin-top: .75rem; width: 100%; } .model-detail__info { margin-top: 2rem; } }
 .admin-page { min-height: 100vh; }
 .admin-header { align-items: center; display: flex; justify-content: space-between; gap: 1rem; margin-bottom: 2rem; }

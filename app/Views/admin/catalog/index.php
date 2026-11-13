@@ -15,7 +15,7 @@
             <tbody><?php foreach ($models as $model): ?><tr>
                 <td><strong><?= esc($model['title']) ?></strong><br><small><?= esc($model['slug']) ?></small></td>
                 <td><span class="status status--<?= esc($model['status']) ?>"><?= esc($model['status']) ?></span></td>
-                <td><?= esc($model['currency']) ?> <?= number_format((float) $model['price'], 2, ',', '.') ?></td>
+                <td><?= (int) ($model['is_free'] ?? 0) === 1 ? '<span class="price-free">Gratuito</span>' : esc($model['currency']) . ' ' . number_format((float) $model['price'], 2, ',', '.') ?></td>
                 <td><?= esc((string) ($model['updated_at'] ?? '')) ?></td>
                 <td class="table-actions">
                     <a href="<?= site_url('admin/catalogo/' . $model['id'] . '/editar') ?>">Editar</a>

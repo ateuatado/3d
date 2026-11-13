@@ -32,7 +32,11 @@
                         <h2><?= esc($model['title']) ?></h2>
                         <p><?= esc(mb_strimwidth(strip_tags((string) $model['description']), 0, 140, '...', 'UTF-8')) ?></p>
                         <div class="model-card__footer">
-                            <strong><?= esc($model['currency']) ?> <?= number_format((float) $model['price'], 2, ',', '.') ?></strong>
+                            <?php if ((int) ($model['is_free'] ?? 0) === 1): ?>
+                                <strong class="price-free">Gratuito</strong>
+                            <?php else: ?>
+                                <strong><?= esc($model['currency']) ?> <?= number_format((float) $model['price'], 2, ',', '.') ?></strong>
+                            <?php endif; ?>
                             <a href="<?= site_url('catalogo/' . rawurlencode($model['slug'])) ?>">Ver modelo</a>
                         </div>
                     </div>

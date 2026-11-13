@@ -31,6 +31,11 @@ Regras:
 
 Produto público do catálogo.
 
+Campos adicionais: gratuito (booleano, padrão falso), indicando se o arquivo
+original pode ser baixado sem pagamento. A gratuidade não altera o preço
+registrado para fins de histórico; a rota de download exige publicação, arquivo
+original aprovado e gratuidade ativa.
+
 Campos principais: título, slug, descrição, categoria, etiquetas, dimensões,
 unidade, uso pretendido, compatibilidade, licença, preço, moeda, status, versão
 publicada, criado por, atualizado por e datas.

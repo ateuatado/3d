@@ -24,6 +24,9 @@ Como visitante, quero encontrar um modelo pela busca ou pelo catálogo e analisa
 2. **Dado** um visitante pesquisando no catálogo, **quando** ele envia um termo relevante, **então** são exibidos modelos publicados correspondentes.
 3. **Dado** um visitante anônimo em uma página de modelo, **quando** ele analisa os recursos da página, **então** o arquivo original protegido não é exposto.
 
+4. **Dado** um visitante na página inicial, **quando** ele acessa o site, **então** ele vê modelos publicados, descrições resumidas, modelos gratuitos e uma chamada para solicitar uma peça impressa ou personalizada.
+5. **Dado** um modelo marcado como gratuito, **quando** o visitante acessa sua página, **então** ele consegue baixar o arquivo original sem pagamento, por uma rota protegida que só entrega modelos publicados e gratuitos.
+
 ### História de usuário 2 - Comprar e baixar um modelo (Prioridade: P1)
 
 Como cliente, quero entrar com o Google, pagar por Pix e baixar os arquivos comprados após a confirmação do pagamento.
@@ -83,11 +86,15 @@ Como visitante ou cliente, quero enviar requisitos e anexos de uma peça persona
 
 ### Requisitos funcionais
 
-- **RF-001**: O sistema DEVE fornecer páginas públicas para modelos publicados com título, descrição, pré-visualização, especificações, formatos, preço e ação de compra.
+- **RF-001**: O sistema DEVE fornecer uma página inicial pública com modelos publicados, descrições resumidas, destaque para modelos gratuitos e chamada para modelos impressos ou peças personalizadas.
+- **RF-001a**: O sistema DEVE fornecer páginas públicas para modelos publicados com título, descrição, pré-visualização, especificações, formatos, preço e ação de compra ou download gratuito.
 - **RF-002**: O sistema DEVE permitir a indexação das páginas públicas e excluir da descoberta pública as páginas administrativas, de clientes, pagamentos e downloads.
 - **RF-003**: O sistema DEVE fornecer pré-visualização 3D compatível com o navegador sem expor o original comercial.
 - **RF-004**: Administradores autorizados DEVEM poder criar, editar, publicar, retirar, arquivar e versionar modelos.
 - **RF-005**: O sistema DEVE aceitar formatos 3D comuns e vários arquivos por modelo.
+- **RF-005a**: O sistema DEVE permitir classificar cada modelo como gratuito ou pago e exibir essa condição no catálogo e na página de detalhes.
+- **RF-005b**: O download gratuito DEVE validar publicação, gratuidade e arquivo original aprovado antes de entregar o arquivo.
+- **RF-005c**: O sistema DEVE apresentar uma chamada para solicitação de impressão física ou peça personalizada, inicialmente direcionada ao WhatsApp.
 - **RF-006**: As definições do modelo DEVEM aceitar dimensões, unidades, uso pretendido, notas de compatibilidade, etiquetas, categorias e termos de licença.
 - **RF-007**: Administradores DEVEM poder definir preços e status de publicação, com histórico de alterações relevantes.
 - **RF-008**: Clientes DEVEM autenticar-se pelo Google antes que uma compra ou download seja associado a uma conta.

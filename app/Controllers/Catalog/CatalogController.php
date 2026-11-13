@@ -61,4 +61,25 @@ final class CatalogController extends BaseController
             ->setHeader('Cache-Control', 'public, max-age=3600')
             ->setBody($contents);
     }
+
+    public function freeDownload(int $fileId)
+    {
+        $file = (new ModelFileModel())
+            ->select('model_files.*, models.is_free, models.status')
+            ->join('models', 'models.id = model_files.model_id')
+            ->where('model_files.id', $fileId)
+            ->where('model_files.kind', 'original')
+            ->where('model_files.status', 'approved')
+            ->where('models.status', 'published')
+            ->where('models.is_free', 1)
+            ->first();
+
+        if ($file === null) {
+            throw PageNotFoundException::forPageNotFound('Download gratuito não encontrado.');
+        }
+
+        (new PrivateFileStorage())->assertPrivatePath($file['storage_path']);
+
+        return $this->response->download($file['storage_path'], null);
+    }
 }

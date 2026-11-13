@@ -6,6 +6,7 @@ use CodeIgniter\Router\RouteCollection;
 $routes->get('/', 'Home::index');
 $routes->get('catalogo', 'Catalog\CatalogController::index');
 $routes->get('catalogo/preview/(:num)', 'Catalog\CatalogController::preview/$1');
+$routes->get('catalogo/download/(:num)', 'Catalog\CatalogController::freeDownload/$1');
 $routes->get('catalogo/(:segment)', 'Catalog\CatalogController::show/$1');
 $routes->group('admin', ['filter' => 'permission:admin.access'], static function ($routes): void {
     $routes->get('catalogo', 'Admin\CatalogAdminController::index');

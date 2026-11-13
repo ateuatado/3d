@@ -22,9 +22,16 @@
                 <?php if (! empty($model['intended_use'])): ?><div><dt>Uso indicado</dt><dd><?= esc($model['intended_use']) ?></dd></div><?php endif; ?>
             </dl>
             <div class="purchase-box">
-                <strong><?= esc($model['currency']) ?> <?= number_format((float) $model['price'], 2, ',', '.') ?></strong>
-                <a class="button" href="<?= site_url('login') ?>">Entrar para comprar</a>
-                <small>O download é liberado somente após a confirmação do pagamento.</small>
+                <?php if ((int) ($model['is_free'] ?? 0) === 1): ?>
+                    <strong class="price-free">Gratuito</strong>
+                    <?php $original = array_values(array_filter($files, static fn (array $file): bool => $file['kind'] === 'original'))[0] ?? null; ?>
+                    <?php if ($original !== null): ?><a class="button" href="<?= site_url('catalogo/download/' . $original['id']) ?>">Baixar modelo gratuitamente</a><?php endif; ?>
+                    <small>Este modelo está disponível gratuitamente.</small>
+                <?php else: ?>
+                    <strong><?= esc($model['currency']) ?> <?= number_format((float) $model['price'], 2, ',', '.') ?></strong>
+                    <a class="button" href="<?= site_url('login') ?>">Entrar para comprar</a>
+                    <small>O download será liberado somente após a confirmação do pagamento.</small>
+                <?php endif; ?>
             </div>
         </section>
     </div>

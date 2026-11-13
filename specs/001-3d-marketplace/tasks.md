@@ -45,6 +45,8 @@ não está acessível por URL pública.
 - [ ] T016 [P] [US1] Criar upload e associação de pré-visualização e arquivos comerciais em \`app/Services/Catalog/ModelFileService.php\`
 - [x] T017 [US1] Implementar consulta de modelos publicados e pesquisa em \`app/Services/Catalog/CatalogService.php\`
 - [x] T018 [US1] Criar rotas públicas de catálogo em \`app/Config/Routes.php\` e \`app/Controllers/Catalog/CatalogController.php\`
+- [x] T018a [US1] Criar vitrine inicial com modelos publicados, descrições, modelos gratuitos e chamada para impressão em \`app/Controllers/Home.php\` e \`app/Views/pages/home.php\`
+- [x] T018b [US1] Adicionar classificação gratuita, migração e download condicionado a modelo publicado e gratuito
 - [x] T019 [US1] Criar páginas de lista, busca e detalhe em \`app/Views/catalog/\`
 - [x] T020 [US1] Implementar visualizador GLB/GLTF com \`model-viewer\` em \`public/assets/js/catalog-viewer.js\`
 - [ ] T021 [US1] Criar metatags, dados estruturados, sitemap e regras de indexação em \`app/Controllers/Catalog/\`, \`app/Views/catalog/\` e \`public/robots.txt\`

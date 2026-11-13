@@ -18,11 +18,15 @@ final class CatalogService
     /**
      * @return list<array<string, mixed>>
      */
-    public function searchPublished(?string $term = null): array
+    public function searchPublished(?string $term = null, ?int $limit = null, bool $freeOnly = false): array
     {
         $builder = $this->models
             ->where('status', 'published')
             ->orderBy('created_at', 'DESC');
+
+        if ($freeOnly) {
+            $builder->where('is_free', 1);
+        }
 
         if ($term !== null && trim($term) !== '') {
             $like = trim($term);
@@ -35,7 +39,7 @@ final class CatalogService
                 ->groupEnd();
         }
 
-        return $builder->findAll();
+        return $limit === null ? $builder->findAll() : $builder->findAll($limit);
     }
 
     /**

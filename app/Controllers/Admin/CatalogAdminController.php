@@ -65,6 +65,7 @@ final class CatalogAdminController extends BaseController
         $original = $this->request->getFile('original_file');
         $preview = $this->request->getFile('preview_file');
         $publish = $this->request->getPost('publish') === '1';
+        $isFree = $this->request->getPost('is_free') === '1';
         $previewOk = $preview !== null && $preview->isValid()
             && in_array(PrivateFileStorage::extensionOf($preview), $filesConfig->previewExtensions, true)
             && PrivateFileStorage::isValidGltf($preview);
@@ -98,6 +99,7 @@ final class CatalogAdminController extends BaseController
             'published_version' => $publish ? 1 : null,
             'created_by' => $user?->id,
             'updated_by' => $user?->id,
+            'is_free' => $isFree ? 1 : 0,
         ], true);
 
         if (! $modelId) {
@@ -153,6 +155,7 @@ final class CatalogAdminController extends BaseController
         $hasOriginal = $fileModel->where(['model_id' => $id, 'kind' => 'original', 'status' => 'approved'])->countAllResults() > 0;
         $previewSent = $preview?->isValid() ?? false;
         $publish = $this->request->getPost('publish') === '1';
+        $isFree = $this->request->getPost('is_free') === '1';
 
         if ($publish && ! ($hasPreview || $previewSent) || $publish && ! ($hasOriginal || $original?->isValid())) {
             return redirect()->back()->withInput()->with('errors', [
@@ -183,6 +186,7 @@ final class CatalogAdminController extends BaseController
             'status' => $newStatus,
             'published_version' => $publish ? $version : $model['published_version'],
             'updated_by' => auth()->user()?->id,
+            'is_free' => $isFree ? 1 : 0,
         ]);
 
         $storage = new PrivateFileStorage($filesConfig);

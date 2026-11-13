@@ -24,6 +24,7 @@
             <label>Arquivo original <input name="original_file" type="file" <?= $model === null ? 'required' : '' ?> accept=".stl,.obj,.fbx,.glb,.gltf,.3ds,.ply,.step,.stp,.iges,.igs,.zip"></label>
             <label>Pré-visualização GLB/GLTF <input name="preview_file" type="file" accept=".glb,.gltf"></label>
         </div>
+        <label class="checkbox"><input name="is_free" value="1" type="checkbox" <?= ((int) ($model['is_free'] ?? 0) === 1 || old('is_free') === '1') ? 'checked' : '' ?>> Modelo gratuito para download</label>
         <?php if (auth()->user()?->can('catalog.publish')): ?><label class="checkbox"><input name="publish" value="1" type="checkbox" <?= ($model !== null && $model['status'] === 'published') ? 'checked' : '' ?>> Publicar modelo</label><?php endif; ?>
         <button type="submit"><?= $model === null ? 'Salvar modelo' : 'Atualizar modelo' ?></button>
     </form>
