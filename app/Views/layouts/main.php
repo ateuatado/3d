@@ -9,5 +9,6 @@
 <body>
     <?= $this->renderSection('content') ?>
     <script src="<?= base_url('assets/js/app.js') ?>"></script>
+    <?= $this->renderSection('scripts') ?>
 </body>
 </html>

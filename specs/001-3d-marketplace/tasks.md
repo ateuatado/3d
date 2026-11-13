@@ -43,10 +43,10 @@ não está acessível por URL pública.
 
 - [ ] T015 [P] [US1] Criar regras de publicação, slug, preço e campos obrigatórios em \`app/Models/ModelModel.php\`
 - [ ] T016 [P] [US1] Criar upload e associação de pré-visualização e arquivos comerciais em \`app/Services/Catalog/ModelFileService.php\`
-- [ ] T017 [US1] Implementar consulta de modelos publicados e pesquisa em \`app/Services/Catalog/CatalogService.php\`
-- [ ] T018 [US1] Criar rotas públicas de catálogo em \`app/Config/Routes.php\` e \`app/Controllers/Catalog/CatalogController.php\`
-- [ ] T019 [US1] Criar páginas de lista, busca e detalhe em \`app/Views/catalog/\`
-- [ ] T020 [US1] Implementar visualizador GLB/GLTF com GLTFLoader em \`public/assets/js/catalog-viewer.js\`
+- [x] T017 [US1] Implementar consulta de modelos publicados e pesquisa em \`app/Services/Catalog/CatalogService.php\`
+- [x] T018 [US1] Criar rotas públicas de catálogo em \`app/Config/Routes.php\` e \`app/Controllers/Catalog/CatalogController.php\`
+- [x] T019 [US1] Criar páginas de lista, busca e detalhe em \`app/Views/catalog/\`
+- [x] T020 [US1] Implementar visualizador GLB/GLTF com \`model-viewer\` em \`public/assets/js/catalog-viewer.js\`
 - [ ] T021 [US1] Criar metatags, dados estruturados, sitemap e regras de indexação em \`app/Controllers/Catalog/\`, \`app/Views/catalog/\` e \`public/robots.txt\`
 - [ ] T022 [US1] Criar testes de catálogo, publicação, busca e não exposição do original em \`tests/Feature/Catalog/\`
 
