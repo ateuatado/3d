@@ -1,50 +1,46 @@
-# [PROJECT_NAME] Constitution
-<!-- Example: Spec Constitution, TaskFlow Constitution, etc. -->
+<!--
+Sync Impact Report
+- Version change: 0.1.0 -> 1.0.0
+- Modified principles: all template placeholders replaced with product governance.
+- Added sections: Product Scope and Security Standards; Development Workflow.
+- Removed sections: none.
+- Templates requiring updates: none; existing templates remain compatible.
+- Follow-up TODOs: none.
+-->
+
+# 3d Constitution
 
 ## Core Principles
 
-### [PRINCIPLE_1_NAME]
-<!-- Example: I. Library-First -->
-[PRINCIPLE_1_DESCRIPTION]
-<!-- Example: Every feature starts as a standalone library; Libraries must be self-contained, independently testable, documented; Clear purpose required - no organizational-only libraries -->
+### I. Public Discovery, Protected Digital Goods
+The catalog MUST be publicly discoverable and useful to search engines, while commercial model files MUST remain inaccessible until an authorized purchase is confirmed. Preview assets and downloadable originals MUST be treated as separate artifacts. Every download authorization MUST be attributable to a customer and an order.
 
-### [PRINCIPLE_2_NAME]
-<!-- Example: II. CLI Interface -->
-[PRINCIPLE_2_DESCRIPTION]
-<!-- Example: Every library exposes functionality via CLI; Text in/out protocol: stdin/args → stdout, errors → stderr; Support JSON + human-readable formats -->
+### II. Secure Commerce and Payment Truth
+The system MUST treat the payment provider's confirmed notification as the source of truth for payment completion. It MUST support safe retries, prevent duplicate fulfillment, preserve an audit trail for order and payment state changes, and never expose a download solely because a client claims payment success.
 
-### [PRINCIPLE_3_NAME]
-<!-- Example: III. Test-First (NON-NEGOTIABLE) -->
-[PRINCIPLE_3_DESCRIPTION]
-<!-- Example: TDD mandatory: Tests written → User approved → Tests fail → Then implement; Red-Green-Refactor cycle strictly enforced -->
+### III. Customer Value Before Administrative Complexity
+Each feature MUST support a clear customer or business outcome: discovering a model, understanding it, purchasing it, downloading it, or requesting a custom piece. Administrative capabilities MUST enable those outcomes, not become isolated internal complexity. The first release MUST prefer a small, complete purchasing journey over broad but unfinished functionality.
 
-### [PRINCIPLE_4_NAME]
-<!-- Example: IV. Integration Testing -->
-[PRINCIPLE_4_DESCRIPTION]
-<!-- Example: Focus areas requiring integration tests: New library contract tests, Contract changes, Inter-service communication, Shared schemas -->
+### IV. Delegable Administration with Least Privilege
+The platform MUST support multiple administrator accounts with explicit roles and permissions. Administrative access MUST follow least privilege, record security-sensitive actions, and allow the primary owner to revoke delegated access without affecting customer purchases.
 
-### [PRINCIPLE_5_NAME]
-<!-- Example: V. Observability, VI. Versioning & Breaking Changes, VII. Simplicity -->
-[PRINCIPLE_5_DESCRIPTION]
-<!-- Example: Text I/O ensures debuggability; Structured logging required; Or: MAJOR.MINOR.BUILD format; Or: Start simple, YAGNI principles -->
+### V. Testable, Observable, Reversible Delivery
+Business-critical flows MUST have automated tests and acceptance scenarios, especially authentication, payment transitions, download authorization, and administrative permissions. Failures MUST provide actionable logs without exposing secrets or model files. Changes to commerce or security behavior MUST be reversible or accompanied by a migration and rollback plan.
 
-## [SECTION_2_NAME]
-<!-- Example: Additional Constraints, Security Requirements, Performance Standards, etc. -->
+## Product Scope and Security Standards
 
-[SECTION_2_CONTENT]
-<!-- Example: Technology stack requirements, compliance standards, deployment policies, etc. -->
+The product is a marketplace for 3D models and custom-piece requests. The first release includes public catalog pages, web-based 3D previews, Google sign-in, Pix payment through Mercado Pago, protected downloads after confirmation, an administrative catalog, delegated administration, and manual custom-quote requests with WhatsApp support. Original files MUST NOT be stored in a public web-accessible location. Common source formats MAY be sold, while web previews MUST use a browser-suitable representation.
 
-## [SECTION_3_NAME]
-<!-- Example: Development Workflow, Review Process, Quality Gates, etc. -->
+Secrets, payment credentials, OAuth credentials, and private file locations MUST remain outside version control. Customer and payment data MUST be handled with appropriate access controls, and production error responses MUST not reveal internal paths, credentials, or private assets.
 
-[SECTION_3_CONTENT]
-<!-- Example: Code review requirements, testing gates, deployment approval process, etc. -->
+## Development Workflow
+
+Every feature MUST begin with a user-facing specification, prioritized scenarios, testable requirements, measurable success criteria, and explicit assumptions. Plans MUST identify security, payment, file-protection, and permission impacts. Implementation MUST include focused automated tests and a verification step for the affected user journey. A change is not ready when it merely works locally; it is ready when its acceptance scenarios, failure paths, and operational notes are covered.
 
 ## Governance
-<!-- Example: Constitution supersedes all other practices; Amendments require documentation, approval, migration plan -->
 
-[GOVERNANCE_RULES]
-<!-- Example: All PRs/reviews must verify compliance; Complexity must be justified; Use [GUIDANCE_FILE] for runtime development guidance -->
+This constitution governs product specifications, plans, implementation, and reviews. Amendments require a documented rationale, a semantic version update, and review of dependent specifications and templates. Major versions indicate backward-incompatible governance changes; minor versions add or materially expand principles; patch versions clarify wording without changing intent.
 
-**Version**: [CONSTITUTION_VERSION] | **Ratified**: [RATIFICATION_DATE] | **Last Amended**: [LAST_AMENDED_DATE]
-<!-- Example: Version: 2.1.1 | Ratified: 2025-06-13 | Last Amended: 2025-07-16 -->
+All feature reviews MUST check compliance with these principles. Any exception MUST be explicit in the relevant specification or plan, include its rationale, and define a follow-up correction or expiry. The constitution is reviewed when payment, authentication, file delivery, administrator permissions, or product scope changes.
+
+**Version**: 1.0.0 | **Ratified**: 2026-11-13 | **Last Amended**: 2026-11-13
