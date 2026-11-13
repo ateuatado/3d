@@ -50,7 +50,10 @@ final class CatalogAdminController extends BaseController
         $original = $this->request->getFile('original_file');
         $preview = $this->request->getFile('preview_file');
         $publish = $this->request->getPost('publish') === '1';
-        if ($publish && (! $preview?->isValid() || ! in_array(strtolower($preview->getExtension()), $filesConfig->previewExtensions, true))) {
+        $previewOk = $preview !== null && $preview->isValid()
+            && in_array(PrivateFileStorage::extensionOf($preview), $filesConfig->previewExtensions, true)
+            && PrivateFileStorage::isValidGltf($preview);
+        if ($publish && ! $previewOk) {
             return redirect()->back()->withInput()->with('errors', [
                 'preview_file' => 'Para publicar, envie uma pré-visualização GLB ou GLTF válida.',
             ]);

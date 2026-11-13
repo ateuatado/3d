@@ -24,10 +24,19 @@ final class PrivateFileStorage
             throw new RuntimeException('O arquivo excede o limite permitido.');
         }
 
-        $extension = strtolower($file->getExtension());
+        $extension = self::extensionOf($file);
         if (! in_array($extension, $allowedExtensions, true)) {
             throw new RuntimeException('O formato do arquivo não é permitido.');
         }
+        if (in_array($extension, ['glb', 'gltf'], true) && ! self::isValidGltf($file)) {
+            throw new RuntimeException('O arquivo GLB/GLTF não é válido.');
+        }
+
+        // Os metadados precisam ser lidos enquanto o temporário ainda existe.
+        // Depois de move(), o PHP remove o arquivo em C:\xampp\tmp.
+        $originalName = $file->getClientName();
+        $mimeType = (string) $file->getMimeType();
+        $sizeBytes = (int) $file->getSize();
 
         $directory = rtrim($this->config->privateRoot, DIRECTORY_SEPARATOR)
             . DIRECTORY_SEPARATOR . trim($category, DIRECTORY_SEPARATOR);
@@ -40,14 +49,43 @@ final class PrivateFileStorage
         $absolutePath = $directory . DIRECTORY_SEPARATOR . $storageName;
 
         return [
-            'original_name' => $file->getClientName(),
+            'original_name' => $originalName,
             'storage_name' => $storageName,
             'storage_path' => $absolutePath,
-            'mime_type' => (string) $file->getMimeType(),
+            'mime_type' => $mimeType,
             'extension' => $extension,
-            'size_bytes' => (int) filesize($absolutePath),
+            'size_bytes' => $sizeBytes,
             'sha256' => hash_file('sha256', $absolutePath),
         ];
+    }
+
+    /**
+     * Extensão pelo nome do arquivo. getExtension() do CI4 adivinha pelo MIME,
+     * e o PHP não reconhece GLB/GLTF/STL (retorna vazio).
+     */
+    public static function extensionOf(UploadedFile $file): string
+    {
+        return strtolower($file->getClientExtension());
+    }
+
+    /** Confere o conteúdo: GLB começa com "glTF" v2; GLTF é JSON com "asset". */
+    public static function isValidGltf(UploadedFile $file): bool
+    {
+        $tmp = $file->getTempName();
+        $ext = self::extensionOf($file);
+        if ($ext === 'glb') {
+            $head = (string) file_get_contents($tmp, false, null, 0, 12);
+            if (strlen($head) < 12 || substr($head, 0, 4) !== 'glTF') {
+                return false;
+            }
+            $version = unpack('V', substr($head, 4, 4))[1];
+            return $version === 2;
+        }
+        if ($ext === 'gltf') {
+            $json = json_decode((string) file_get_contents($tmp), true);
+            return is_array($json) && isset($json['asset']['version']);
+        }
+        return false;
     }
 
     public function assertPrivatePath(string $path): void
