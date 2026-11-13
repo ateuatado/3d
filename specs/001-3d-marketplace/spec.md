@@ -1,146 +1,146 @@
-# Feature Specification: 3D Model Marketplace
+# Especificação da funcionalidade: Marketplace de modelos 3D
 
-**Feature Branch**: \`001-3d-marketplace\`
+**Ramo da funcionalidade**: \`001-3d-marketplace\`
 
-**Created**: 2026-11-13
+**Criado em**: 2026-11-13
 
-**Status**: Draft
+**Status**: Rascunho
 
-**Input**: User description: "Create a marketplace for 3D models with public Google-indexable pages, interactive previews, protected downloads after Mercado Pago Pix payment, Google login, manual custom-piece requests via WhatsApp, and delegated administrator accounts."
+**Descrição recebida**: "Criar um marketplace de modelos 3D com páginas públicas indexáveis pelo Google, pré-visualização interativa, downloads protegidos após pagamento Pix pelo Mercado Pago, login pelo Google, solicitações manuais de peças sob encomenda via WhatsApp e contas administrativas delegáveis."
 
-## User Scenarios & Testing
+## Cenários de uso e testes
 
-### User Story 1 - Discover and evaluate a model (Priority: P1)
+### História de usuário 1 - Descobrir e avaliar um modelo (Prioridade: P1)
 
-As a visitor, I want to find a model through search or the catalog and inspect its preview and information before deciding whether it is useful.
+Como visitante, quero encontrar um modelo pela busca ou pelo catálogo e analisar sua pré-visualização e informações antes de decidir se ele é útil.
 
-**Why this priority**: Public discovery is the foundation for attracting customers.
+**Motivo da prioridade**: A descoberta pública é a base para atrair clientes.
 
-**Independent Test**: Publish one model, open its page anonymously, and verify that the visitor can inspect the preview and commercial information without receiving the original file.
+**Teste independente**: Publicar um modelo, abrir sua página anonimamente e verificar que o visitante consegue analisar a pré-visualização e as informações comerciais sem receber o arquivo original.
 
-**Acceptance Scenarios**:
+**Cenários de aceitação**:
 
-1. **Given** a published model, **When** a visitor opens its page, **Then** the page shows title, description, preview, supported formats, price, and purchase action.
-2. **Given** a visitor searches the catalog, **When** they submit a relevant term, **Then** matching published models are returned.
-3. **Given** an anonymous visitor views a model page, **When** they inspect page resources, **Then** the protected original file is not exposed.
+1. **Dado** um modelo publicado, **quando** um visitante abre sua página, **então** a página mostra título, descrição, pré-visualização, formatos, preço e ação de compra.
+2. **Dado** um visitante pesquisando no catálogo, **quando** ele envia um termo relevante, **então** são exibidos modelos publicados correspondentes.
+3. **Dado** um visitante anônimo em uma página de modelo, **quando** ele analisa os recursos da página, **então** o arquivo original protegido não é exposto.
 
-### User Story 2 - Purchase and download a model (Priority: P1)
+### História de usuário 2 - Comprar e baixar um modelo (Prioridade: P1)
 
-As a customer, I want to sign in with Google, pay using Pix, and download the purchased files after payment confirmation.
+Como cliente, quero entrar com o Google, pagar por Pix e baixar os arquivos comprados após a confirmação do pagamento.
 
-**Why this priority**: Paid delivery is the core business transaction.
+**Motivo da prioridade**: A entrega paga é a transação central do negócio.
 
-**Independent Test**: Complete a test Pix payment, confirm the provider notification, and verify that only the paid customer receives an authorized download.
+**Teste independente**: Concluir um pagamento Pix de teste, confirmar a notificação do provedor e verificar que somente o cliente pago recebe um download autorizado.
 
-**Acceptance Scenarios**:
+**Cenários de aceitação**:
 
-1. **Given** an unsigned visitor, **When** they begin checkout, **Then** the system requests Google authentication.
-2. **Given** a signed-in customer, **When** they start checkout, **Then** the system creates a pending order and presents Pix instructions.
-3. **Given** a pending order, **When** Mercado Pago confirms payment, **Then** the order becomes paid and the account shows the download.
-4. **Given** an unpaid or failed order, **When** the customer requests the file, **Then** access is denied.
-5. **Given** a duplicate payment notification, **When** it is processed, **Then** fulfillment happens only once.
+1. **Dado** um visitante não autenticado, **quando** ele inicia a compra, **então** o sistema solicita autenticação pelo Google.
+2. **Dado** um cliente autenticado, **quando** ele inicia a compra, **então** o sistema cria um pedido pendente e apresenta as instruções Pix.
+3. **Dado** um pedido pendente, **quando** o Mercado Pago confirma o pagamento, **então** o pedido fica pago e a conta exibe o download.
+4. **Dado** um pedido não pago ou recusado, **quando** o cliente solicita o arquivo, **então** o acesso é negado.
+5. **Dado** uma notificação de pagamento duplicada, **quando** ela é processada, **então** a liberação ocorre apenas uma vez.
 
-### User Story 3 - Manage catalog and delegated administration (Priority: P1)
+### História de usuário 3 - Gerenciar catálogo e administração delegada (Prioridade: P1)
 
-As the owner or an authorized administrator, I want to manage models, files, definitions, prices, publication, and delegated permissions.
+Como proprietário ou administrador autorizado, quero gerenciar modelos, arquivos, definições, preços, publicação e permissões delegadas.
 
-**Why this priority**: The marketplace requires an operable catalog and safe delegation.
+**Motivo da prioridade**: O marketplace precisa de um catálogo operável e de delegação segura.
 
-**Independent Test**: Create a catalog administrator, publish a complete model with that account, and verify that unrelated financial functions remain unavailable.
+**Teste independente**: Criar um administrador de catálogo, publicar um modelo completo com essa conta e verificar que as funções financeiras continuam indisponíveis para ela.
 
-**Acceptance Scenarios**:
+**Cenários de aceitação**:
 
-1. **Given** a catalog administrator, **When** they create a model, **Then** they can provide descriptions, technical definitions, supported formats, price, preview, original files, and status.
-2. **Given** incomplete commercial information, **When** publication is attempted, **Then** the system identifies missing information and blocks publication.
-3. **Given** the owner, **When** they create or update an administrator, **Then** they can assign and later revoke permissions.
-4. **Given** a permission or catalog change, **When** it succeeds, **Then** the responsible administrator and change are recorded.
+1. **Dado** um administrador de catálogo, **quando** ele cria um modelo, **então** pode informar descrição, definições técnicas, formatos, preço, pré-visualização, arquivos originais e status.
+2. **Dado** um modelo sem informações comerciais obrigatórias, **quando** a publicação é tentada, **então** o sistema informa o que falta e bloqueia a publicação.
+3. **Dado** o proprietário, **quando** ele cria ou atualiza um administrador, **então** pode atribuir e depois revogar permissões.
+4. **Dado** uma alteração de permissão ou catálogo, **quando** ela é concluída, **então** o responsável e a alteração são registrados.
 
-### User Story 4 - Request a custom piece (Priority: P2)
+### História de usuário 4 - Solicitar uma peça personalizada (Prioridade: P2)
 
-As a visitor or customer, I want to submit requirements and attachments for a custom piece and continue through WhatsApp.
+Como visitante ou cliente, quero enviar requisitos e anexos de uma peça personalizada e continuar o atendimento pelo WhatsApp.
 
-**Why this priority**: Custom work creates a second revenue path.
+**Motivo da prioridade**: O trabalho personalizado cria uma segunda fonte de receita.
 
-**Independent Test**: Submit a request with details and an attachment, verify it is recorded, and verify the WhatsApp follow-up action.
+**Teste independente**: Enviar uma solicitação com detalhes e anexo, verificar que ela foi registrada e confirmar a ação de contato pelo WhatsApp.
 
-**Acceptance Scenarios**:
+**Cenários de aceitação**:
 
-1. **Given** a visitor or customer, **When** they submit a request, **Then** the system records contact details, requirements, and allowed attachments.
-2. **Given** a submitted request, **When** it is accepted, **Then** the user receives a clear WhatsApp contact action.
-3. **Given** a service administrator, **When** they review a request, **Then** they can update status and internal notes without changing the original submission.
+1. **Dado** um visitante ou cliente, **quando** ele envia uma solicitação, **então** o sistema registra contato, requisitos e anexos permitidos.
+2. **Dado** uma solicitação enviada, **quando** ela é aceita, **então** o usuário recebe uma ação clara para contato pelo WhatsApp.
+3. **Dado** um administrador de atendimento, **quando** ele analisa uma solicitação, **então** pode atualizar o status e as notas internas sem alterar o envio original.
 
-### Edge Cases
+### Casos extremos
 
-- A model may contain multiple source files and a separate browser preview.
-- Payment may be confirmed after the customer closes the browser.
-- Payment may be rejected, canceled, refunded, or disputed.
-- A model may be unpublished after purchase; prior purchases remain visible unless access is explicitly revoked.
-- Checkout may be opened in multiple tabs; duplicate orders and fulfillment must be prevented or reconciled.
-- Google, Mercado Pago, upload, or download services may be temporarily unavailable.
-- Unsupported or malicious model files and request attachments must be rejected or quarantined.
+- Um modelo pode conter vários arquivos de origem e uma pré-visualização separada.
+- O pagamento pode ser confirmado depois que o cliente fecha o navegador.
+- O pagamento pode ser recusado, cancelado, estornado ou contestado.
+- Um modelo pode ser retirado do catálogo depois da compra; compras anteriores continuam visíveis, salvo revogação explícita.
+- O checkout pode ser aberto em várias abas; pedidos e liberações duplicadas devem ser impedidos ou reconciliados.
+- Google, Mercado Pago, upload ou download podem ficar temporariamente indisponíveis.
+- Arquivos de modelos e anexos incompatíveis ou maliciosos devem ser rejeitados ou isolados.
 
-## Requirements
+## Requisitos
 
-### Functional Requirements
+### Requisitos funcionais
 
-- **FR-001**: The system MUST provide public pages for published models with title, description, preview, specifications, formats, price, and purchase action.
-- **FR-002**: The system MUST make public catalog pages indexable while excluding administration, customer, payment, and download pages from public discovery.
-- **FR-003**: The system MUST provide an interactive browser-compatible preview without exposing the commercial original.
-- **FR-004**: Authorized administrators MUST be able to create, edit, publish, unpublish, archive, and version models.
-- **FR-005**: The system MUST support common 3D formats and multiple files per model.
-- **FR-006**: Model definitions MUST support dimensions, units, intended use, compatibility notes, tags, categories, and licensing terms.
-- **FR-007**: Administrators MUST be able to set prices and publication status, with an audit history of material changes.
-- **FR-008**: Customers MUST authenticate through Google before a purchase or download is associated with an account.
-- **FR-009**: The system MUST create a pending order before showing Pix payment instructions.
-- **FR-010**: Pix payment instructions MUST be specific to the order and amount.
-- **FR-011**: Payment and order status MUST change only from validated provider confirmation or an authorized, audited administrative action.
-- **FR-012**: A model MUST be downloadable only when its order is paid and not revoked.
-- **FR-013**: Original files MUST be inaccessible directly and delivered through an authorized, expiring or revocable download.
-- **FR-014**: Duplicate notifications or repeated customer actions MUST NOT cause duplicate fulfillment.
-- **FR-015**: Customers MUST be able to see orders, payment status, purchases, and available downloads.
-- **FR-016**: The owner MUST be able to create, edit, deactivate, and assign permissions to administrators.
-- **FR-017**: The system MUST enforce least-privilege permissions for catalog, service, orders, payments, and platform administration.
-- **FR-018**: Security-sensitive actions, permission changes, payment overrides, publication changes, and download authorizations MUST be auditable.
-- **FR-019**: Visitors or customers MUST be able to submit custom-piece requests with contact details, requirements, and permitted attachments.
-- **FR-020**: Service administrators MUST be able to review requests, update status, and add internal notes without changing the original submission.
-- **FR-021**: The system MUST provide a WhatsApp contact action for personalized service.
-- **FR-022**: Model files and attachments MUST be validated for type, size, integrity, and publication eligibility.
-- **FR-023**: Failure messages MUST be actionable and MUST NOT reveal secrets, private paths, or private assets.
-- **FR-024**: Order, payment, access, and audit information MUST be retained for support and dispute investigation.
+- **RF-001**: O sistema DEVE fornecer páginas públicas para modelos publicados com título, descrição, pré-visualização, especificações, formatos, preço e ação de compra.
+- **RF-002**: O sistema DEVE permitir a indexação das páginas públicas e excluir da descoberta pública as páginas administrativas, de clientes, pagamentos e downloads.
+- **RF-003**: O sistema DEVE fornecer pré-visualização 3D compatível com o navegador sem expor o original comercial.
+- **RF-004**: Administradores autorizados DEVEM poder criar, editar, publicar, retirar, arquivar e versionar modelos.
+- **RF-005**: O sistema DEVE aceitar formatos 3D comuns e vários arquivos por modelo.
+- **RF-006**: As definições do modelo DEVEM aceitar dimensões, unidades, uso pretendido, notas de compatibilidade, etiquetas, categorias e termos de licença.
+- **RF-007**: Administradores DEVEM poder definir preços e status de publicação, com histórico de alterações relevantes.
+- **RF-008**: Clientes DEVEM autenticar-se pelo Google antes que uma compra ou download seja associado a uma conta.
+- **RF-009**: O sistema DEVE criar um pedido pendente antes de mostrar as instruções Pix.
+- **RF-010**: As instruções Pix DEVEM ser específicas para o pedido e seu valor.
+- **RF-011**: O status do pagamento e do pedido DEVE mudar somente por confirmação validada do provedor ou ação administrativa autorizada e auditada.
+- **RF-012**: Um modelo DEVE ser baixável somente quando o pedido associado estiver pago e não revogado.
+- **RF-013**: Os arquivos originais DEVEM ser inacessíveis diretamente e entregues por download autorizado, expirável ou revogável.
+- **RF-014**: Notificações duplicadas ou ações repetidas do cliente NÃO DEVEM causar liberações duplicadas.
+- **RF-015**: Clientes DEVEM visualizar pedidos, status de pagamento, compras e downloads disponíveis.
+- **RF-016**: O proprietário DEVE poder criar, editar, desativar e atribuir permissões a administradores.
+- **RF-017**: O sistema DEVE aplicar menor privilégio às funções de catálogo, atendimento, pedidos, pagamentos e administração da plataforma.
+- **RF-018**: Ações sensíveis, alterações de permissões, ajustes de pagamento, mudanças de publicação e autorizações de download DEVEM ser auditáveis.
+- **RF-019**: Visitantes ou clientes DEVEM poder enviar solicitações de peças sob encomenda com contato, requisitos e anexos permitidos.
+- **RF-020**: Administradores de atendimento DEVEM poder analisar solicitações, atualizar status e adicionar notas internas sem alterar o envio original.
+- **RF-021**: O sistema DEVE fornecer uma ação de contato pelo WhatsApp para atendimento personalizado.
+- **RF-022**: Arquivos de modelos e anexos DEVEM ser validados quanto a tipo, tamanho, integridade e elegibilidade para publicação.
+- **RF-023**: Mensagens de falha DEVEM ser úteis e NÃO DEVEM revelar segredos, caminhos privados ou recursos privados.
+- **RF-024**: Informações de pedidos, pagamentos, acessos e auditoria DEVEM ser mantidas para atendimento e investigação de disputas.
 
-### Key Entities
+### Entidades principais
 
-- **Model**: Catalog product with description, preview, definitions, formats, price, status, license, and versions.
-- **Model File**: Original, preview, or supplementary asset with visibility and permitted-use classification.
-- **Customer**: Google-authenticated person who can purchase, download, and request custom work.
-- **Administrator**: Staff account with delegated permissions and auditable identity.
-- **Order**: Purchase intent containing model items, amount, currency, and lifecycle status.
-- **Payment**: Mercado Pago transaction associated with an order and its Pix confirmation data.
-- **Download Authorization**: Permission connecting a customer, paid order, model file, validity, and revocation state.
-- **Custom Request**: Manual service request with requirements, attachments, status, notes, and WhatsApp context.
-- **Audit Event**: Record of security, commercial, permission, publication, or fulfillment activity.
+- **Modelo**: Produto do catálogo com descrição, pré-visualização, definições, formatos, preço, status, licença e versões.
+- **Arquivo do modelo**: Arquivo original, de pré-visualização ou complementar, com classificação de visibilidade e uso.
+- **Cliente**: Pessoa autenticada pelo Google que pode comprar, baixar e solicitar trabalho personalizado.
+- **Administrador**: Conta da equipe com permissões delegadas e identidade auditável.
+- **Pedido**: Intenção de compra com itens, valor, moeda e status.
+- **Pagamento**: Transação do Mercado Pago associada ao pedido e aos dados de confirmação Pix.
+- **Autorização de download**: Permissão que liga cliente, pedido pago, arquivo, validade e revogação.
+- **Solicitação personalizada**: Pedido manual de atendimento com requisitos, anexos, status, notas e contexto do WhatsApp.
+- **Evento de auditoria**: Registro de atividade de segurança, comércio, permissões, publicação ou liberação.
 
-## Success Criteria
+## Critérios de sucesso
 
-### Measurable Outcomes
+### Resultados mensuráveis
 
-- **SC-001**: At least 95% of first-time visitors can find the purchase action and specifications on a public model page without assistance.
-- **SC-002**: A signed-in customer can create a Pix order in under 3 minutes when the provider is available.
-- **SC-003**: At least 98% of confirmed paid orders expose the authorized download within 2 minutes of validated confirmation.
-- **SC-004**: Zero unpaid or unauthenticated test cases can retrieve an original model file.
-- **SC-005**: At least 95% of representative customers can complete Google sign-in, payment initiation, and download without support.
-- **SC-006**: A catalog administrator can publish a complete model in under 10 minutes.
-- **SC-007**: 100% of permission, payment override, publication, and download authorization changes have an attributable audit record.
-- **SC-008**: At least 90% of valid custom requests are recorded successfully and provide usable WhatsApp follow-up.
+- **CS-001**: Pelo menos 95% dos visitantes iniciantes encontram a ação de compra e as especificações na página pública sem ajuda.
+- **CS-002**: Um cliente autenticado consegue criar um pedido Pix em menos de 3 minutos quando o provedor está disponível.
+- **CS-003**: Pelo menos 98% dos pedidos pagos confirmados exibem o download autorizado em até 2 minutos após a confirmação.
+- **CS-004**: Nenhum caso de teste não pago ou não autenticado consegue recuperar um arquivo original.
+- **CS-005**: Pelo menos 95% dos clientes representativos concluem login Google, início do pagamento e download sem suporte.
+- **CS-006**: Um administrador de catálogo consegue publicar um modelo completo em menos de 10 minutos.
+- **CS-007**: 100% das alterações de permissões, ajustes de pagamento, publicação e autorizações de download têm registro auditável.
+- **CS-008**: Pelo menos 90% das solicitações válidas são registradas com sucesso e fornecem um contato utilizável pelo WhatsApp.
 
-## Assumptions
+## Premissas
 
-- The first release sells digital model files; physical manufacturing and shipping are out of scope.
-- Mercado Pago Pix is the initial payment method; other payment methods may be added later.
-- Google sign-in is the primary customer authentication method; password login is out of scope for the first release.
-- Browser previews use a converted or separately uploaded web-compatible representation; original formats remain protected downloads.
-- Mercado Pago, Google OAuth, and WhatsApp credentials are supplied through secure environment configuration.
-- Custom-piece pricing is manual and is not calculated automatically in the first release.
-- WhatsApp is the primary personalized service channel; in-platform real-time chat is out of scope.
-- The first release targets responsive web browsers; a native mobile application is out of scope.
-- Prices use a configured business currency and tax/legal requirements are confirmed before launch.
+- A primeira versão vende arquivos digitais; fabricação e envio físicos estão fora do escopo.
+- O Pix pelo Mercado Pago é o método inicial; outros métodos poderão ser adicionados.
+- O login pelo Google é o método principal; login por senha está fora da primeira versão.
+- As pré-visualizações usam representação convertida ou enviada separadamente; os formatos originais permanecem protegidos.
+- Credenciais do Mercado Pago, Google OAuth e WhatsApp serão fornecidas por configuração segura do ambiente.
+- O preço de peças personalizadas é manual e não será calculado automaticamente na primeira versão.
+- O WhatsApp é o canal principal de atendimento personalizado; chat interno está fora da primeira versão.
+- A primeira versão atende navegadores responsivos; aplicativo nativo está fora do escopo.
+- Os preços usam a moeda configurada para o negócio, e as exigências fiscais e legais serão confirmadas antes do lançamento.

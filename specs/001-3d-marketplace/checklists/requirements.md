@@ -1,38 +1,38 @@
-# Specification Quality Checklist: 3D Model Marketplace
+# Checklist de qualidade da especificação: Marketplace de modelos 3D
 
-**Purpose**: Validate specification completeness and quality before planning
+**Objetivo**: Validar a completude e a qualidade da especificação antes do planejamento.
 
-**Created**: 2026-11-13
+**Criado em**: 2026-11-13
 
-**Feature**: [spec.md](../spec.md)
+**Funcionalidade**: [spec.md](../spec.md)
 
-## Content Quality
+## Qualidade do conteúdo
 
-- [x] No implementation details in the specification
-- [x] Focused on user value and business needs
-- [x] Written for business stakeholders
-- [x] All mandatory sections completed
+- [x] Não há detalhes de implementação na especificação
+- [x] O foco está no valor para o usuário e nas necessidades do negócio
+- [x] O texto é compreensível para partes interessadas não técnicas
+- [x] Todas as seções obrigatórias estão preenchidas
 
-## Requirement Completeness
+## Completude dos requisitos
 
-- [x] No unresolved clarification markers remain
-- [x] Requirements are testable and unambiguous
-- [x] Success criteria are measurable
-- [x] Success criteria are technology-agnostic
-- [x] Acceptance scenarios are defined for all user journeys
-- [x] Edge cases are identified
-- [x] Scope is bounded by assumptions
-- [x] Dependencies and assumptions are identified
+- [x] Não há marcadores de esclarecimento pendentes
+- [x] Os requisitos são testáveis e sem ambiguidades
+- [x] Os critérios de sucesso são mensuráveis
+- [x] Os critérios de sucesso não dependem de tecnologia
+- [x] Os cenários de aceitação estão definidos
+- [x] Os casos extremos estão identificados
+- [x] O escopo está limitado pelas premissas
+- [x] Dependências e premissas estão identificadas
 
-## Feature Readiness
+## Prontidão da funcionalidade
 
-- [x] Functional requirements have acceptance coverage
-- [x] User scenarios cover discovery, purchase, administration, and custom requests
-- [x] Success criteria define measurable outcomes
-- [x] No implementation details leak into the specification
+- [x] Os requisitos funcionais possuem cobertura de aceitação
+- [x] Os cenários cobrem descoberta, compra, administração e encomendas
+- [x] Os critérios de sucesso definem resultados mensuráveis
+- [x] Não há detalhes de implementação indevidos na especificação
 
-## Notes
+## Observações
 
-The specification is ready for the planning phase. Payment credentials, Google OAuth
-credentials, WhatsApp contact configuration, currency, and legal/tax policy are
-environment or business launch inputs, not blockers for planning.
+A especificação está pronta para a fase de planejamento. Credenciais de pagamento,
+Google OAuth, configuração do WhatsApp, moeda e políticas fiscais são informações
+de ambiente ou de negócio para o lançamento, não impedimentos para o planejamento.
