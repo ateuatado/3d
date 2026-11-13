@@ -15,11 +15,12 @@ final class CatalogController extends BaseController
     public function index(): string
     {
         $term = trim((string) $this->request->getGet('q'));
+        $freeOnly = $this->request->getGet('gratuitos') === '1';
 
         return view('catalog/index', [
-            'title' => $term === '' ? 'Catálogo de modelos 3D' : 'Busca: ' . $term,
+            'title' => $freeOnly ? 'Modelos gratuitos | 3d' : ($term === '' ? 'Catálogo de modelos 3D' : 'Busca: ' . $term),
             'term' => $term,
-            'models' => (new CatalogService())->searchPublished($term),
+            'models' => (new CatalogService())->searchPublished($term, null, $freeOnly),
         ]);
     }
 
