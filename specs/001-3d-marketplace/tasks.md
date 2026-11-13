@@ -82,7 +82,7 @@ tentar acessar funções financeiras e revogar o acesso.
 
 - [x] T035 [P] [US3] Criar painel administrativo base e navegação protegida em \`app/Controllers/Admin/CatalogAdminController.php\` e \`app/Views/admin/catalog/\`
 - [x] T036 [US3] Criar formulário administrativo de modelos, arquivos e publicação em \`app/Controllers/Admin/CatalogAdminController.php\` e \`app/Views/admin/catalog/\`
-- [ ] T037 [US3] Implementar gerenciamento de usuários administrativos e permissões em \`app/Controllers/Admin/AdminUsersController.php\` e \`app/Views/admin/users/\`
+- [x] T037 [US3] Implementar gerenciamento de usuários administrativos e permissões em \`app/Controllers/Admin/AdminUsersController.php\` e \`app/Views/admin/users/\`
 - [x] T038 [US3] Aplicar autorização por permissão nas rotas administrativas usando o filtro do Shield em \`app/Config/Filters.php\` e \`app/Config/Routes.php\`
 - [ ] T039 [US3] Criar telas de pedidos, pagamentos e eventos de auditoria em \`app/Controllers/Admin/OrdersAdminController.php\` e \`app/Views/admin/orders/\`
 - [ ] T040 [US3] Criar testes de permissão, revogação e auditoria em \`tests/Feature/Admin/\`
