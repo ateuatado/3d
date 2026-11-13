@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title><?= esc($title ?? '3d') ?></title>
-    <link rel="stylesheet" href="<?= base_url('assets/css/app.css') ?>">
+    <?php $cssPath = FCPATH . 'assets/css/app.css'; ?>
+    <link rel="stylesheet" href="<?= base_url('assets/css/app.css') . '?v=' . (is_file($cssPath) ? filemtime($cssPath) : time()) ?>">
 </head>
 <body>
     <header class="site-header">
