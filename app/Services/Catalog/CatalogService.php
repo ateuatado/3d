@@ -56,6 +56,7 @@ final class CatalogService
             ->where('model_id', $model['id'])
             ->where('version', $model['published_version'] ?? 1)
             ->where('status', 'approved')
+            ->orderBy('id', 'DESC')
             ->findAll();
 
         $preview = null;
