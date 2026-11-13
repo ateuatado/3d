@@ -7,5 +7,15 @@ $routes->get('/', 'Home::index');
 $routes->get('catalogo', 'Catalog\CatalogController::index');
 $routes->get('catalogo/preview/(:num)', 'Catalog\CatalogController::preview/$1');
 $routes->get('catalogo/(:segment)', 'Catalog\CatalogController::show/$1');
+$routes->group('admin', ['filter' => 'permission:admin.access'], static function ($routes): void {
+    $routes->get('catalogo', 'Admin\CatalogAdminController::index');
+    $routes->get('catalogo/novo', 'Admin\CatalogAdminController::new', ['filter' => 'permission:catalog.manage']);
+    $routes->post('catalogo', 'Admin\CatalogAdminController::create', ['filter' => 'permission:catalog.manage']);
+});
+$routes->group('admin', ['filter' => 'permission:admin.access'], static function ($routes): void {
+    $routes->get('catalogo', 'Admin\CatalogAdminController::index');
+    $routes->get('catalogo/novo', 'Admin\CatalogAdminController::new', ['filter' => 'permission:catalog.manage']);
+    $routes->post('catalogo', 'Admin\CatalogAdminController::create', ['filter' => 'permission:catalog.manage']);
+});
 
 service('auth')->routes($routes);
