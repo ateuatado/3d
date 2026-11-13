@@ -30,7 +30,7 @@
                     <div class="model-card__body">
                         <p class="eyebrow"><?= esc($model['category'] ?? 'Modelo 3D') ?></p>
                         <h2><?= esc($model['title']) ?></h2>
-                        <p><?= esc(character_limiter(strip_tags($model['description']), 140)) ?></p>
+                        <p><?= esc(mb_strimwidth(strip_tags((string) $model['description']), 0, 140, '...', 'UTF-8')) ?></p>
                         <div class="model-card__footer">
                             <strong><?= esc($model['currency']) ?> <?= number_format((float) $model['price'], 2, ',', '.') ?></strong>
                             <a href="<?= site_url('catalogo/' . rawurlencode($model['slug'])) ?>">Ver modelo</a>
