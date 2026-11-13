@@ -12,25 +12,25 @@ e validação transversal.
 ## Fase 1: Preparação
 
 - [ ] T001 Confirmar dependências PHP e adicionar clientes de OAuth Google e Mercado Pago em \`composer.json\`
-- [ ] T002 [P] Criar configurações tipadas em \`app/Config/Google.php\`, \`app/Config/MercadoPago.php\` e \`app/Config/Files.php\`
-- [ ] T003 [P] Criar a estrutura de diretórios de controllers, serviços, views, testes e armazenamento privado conforme \`plan.md\`
+- [x] T002 [P] Criar configurações tipadas em \`app/Config/Google.php\`, \`app/Config/MercadoPago.php\` e \`app/Config/Files.php\`
+- [x] T003 [P] Criar a estrutura de diretórios de controllers, serviços, views, testes e armazenamento privado conforme \`plan.md\`
 - [ ] T004 [P] Criar variáveis documentadas e seguras no arquivo \`env\`, mantendo segredos fora de \`.env\` versionado
-- [ ] T005 [P] Definir estilos e scripts-base separados em \`public/assets/css/app.css\` e \`public/assets/js/app.js\`
+- [x] T005 [P] Definir estilos e scripts-base separados em \`public/assets/css/app.css\` e \`public/assets/js/app.js\`
 
 ## Fase 2: Base obrigatória
 
 **Objetivo**: preparar banco, autenticação, permissões, auditoria, upload privado
 e convenções de resposta antes das histórias de usuário.
 
-- [ ] T006 Criar migrações para modelos, arquivos, pedidos, itens, pagamentos, autorizações, solicitações e eventos em \`app/Database/Migrations/\`
-- [ ] T007 Criar modelos e regras de validação das entidades em \`app/Models/\`
-- [ ] T008 [P] Configurar grupos e permissões administrativas em \`app/Config/AuthGroups.php\` e \`app/Config/Auth.php\`
+- [x] T006 Criar migrações para modelos, arquivos, pedidos, itens, pagamentos, autorizações, solicitações e eventos em \`app/Database/Migrations/\`
+- [x] T007 Criar modelos e regras de validação das entidades em \`app/Models/\`
+- [x] T008 [P] Configurar grupos e permissões administrativas em \`app/Config/AuthGroups.php\` e \`app/Config/Auth.php\`
 - [ ] T009 [P] Criar filtros de autenticação, autorização e proteção CSRF em \`app/Config/Filters.php\` e \`app/Filters/\`
-- [ ] T010 [P] Implementar registro de auditoria em \`app/Services/Audit/AuditService.php\` e \`app/Models/AuditEventModel.php\`
-- [ ] T011 Implementar armazenamento privado com nomes aleatórios, validação de tipo/tamanho e caminhos controlados em \`app/Services/Storage/PrivateFileStorage.php\`
+- [x] T010 [P] Implementar registro de auditoria em \`app/Services/Audit/AuditService.php\` e \`app/Models/AuditEventModel.php\`
+- [x] T011 Implementar armazenamento privado com nomes aleatórios, validação de tipo/tamanho e caminhos controlados em \`app/Services/Storage/PrivateFileStorage.php\`
 - [ ] T012 [P] Criar tratamento seguro de exceções, logs e respostas de erro em \`app/Config/Exceptions.php\` e \`app/Services/Audit/\`
 - [ ] T013 Criar dados iniciais de grupos administrativos e permissões em \`app/Database/Seeds/MarketplaceSeeder.php\`
-- [ ] T014 [P] Criar testes de base para permissões, upload privado e auditoria em \`tests/Feature/Foundation/\`
+- [x] T014 [P] Criar testes de base para permissões, upload privado e auditoria em \`tests/unit/MarketplaceFoundationTest.php\`
 
 ## Fase 3: História 1 — Catálogo e pré-visualização pública (P1) — MVP
 

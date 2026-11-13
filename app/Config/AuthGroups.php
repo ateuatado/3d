@@ -46,8 +46,20 @@ class AuthGroups extends ShieldAuthGroups
             'description' => 'Complete control of the site.',
         ],
         'admin' => [
-            'title'       => 'Admin',
-            'description' => 'Day to day administrators of the site.',
+            'title'       => 'Administrador',
+            'description' => 'Administrador geral da plataforma.',
+        ],
+        'catalog' => [
+            'title'       => 'Catálogo',
+            'description' => 'Gerencia modelos, arquivos e publicação.',
+        ],
+        'support' => [
+            'title'       => 'Atendimento',
+            'description' => 'Gerencia solicitações e atendimento ao cliente.',
+        ],
+        'finance' => [
+            'title'       => 'Financeiro',
+            'description' => 'Consulta pedidos e pagamentos.',
         ],
         'developer' => [
             'title'       => 'Developer',
@@ -72,9 +84,15 @@ class AuthGroups extends ShieldAuthGroups
      * If a permission is not listed here it cannot be used.
      */
     public array $permissions = [
-        'admin.access'        => 'Can access the sites admin area',
-        'admin.settings'      => 'Can access the main site settings',
-        'users.manage-admins' => 'Can manage other admins',
+        'admin.access'        => 'Pode acessar a área administrativa',
+        'admin.settings'      => 'Pode acessar as configurações principais',
+        'users.manage-admins' => 'Pode gerenciar outros administradores',
+        'catalog.manage'      => 'Pode gerenciar modelos e arquivos',
+        'catalog.publish'     => 'Pode publicar ou retirar modelos',
+        'orders.view'         => 'Pode consultar pedidos',
+        'payments.view'       => 'Pode consultar pagamentos',
+        'custom-requests.manage' => 'Pode gerenciar solicitações personalizadas',
+        'audit.view'          => 'Pode consultar auditoria',
         'users.create'        => 'Can create new non-admin users',
         'users.edit'          => 'Can edit existing non-admin users',
         'users.delete'        => 'Can delete existing non-admin users',
@@ -94,9 +112,19 @@ class AuthGroups extends ShieldAuthGroups
             'admin.*',
             'users.*',
             'beta.*',
+            'catalog.*',
+            'orders.*',
+            'payments.*',
+            'custom-requests.*',
+            'audit.*',
         ],
         'admin' => [
             'admin.access',
+            'catalog.*',
+            'orders.*',
+            'payments.*',
+            'custom-requests.*',
+            'audit.view',
             'users.create',
             'users.edit',
             'users.delete',
@@ -108,6 +136,21 @@ class AuthGroups extends ShieldAuthGroups
             'users.create',
             'users.edit',
             'beta.access',
+        ],
+        'catalog' => [
+            'admin.access',
+            'catalog.manage',
+            'catalog.publish',
+        ],
+        'support' => [
+            'admin.access',
+            'custom-requests.manage',
+            'orders.view',
+        ],
+        'finance' => [
+            'admin.access',
+            'orders.view',
+            'payments.view',
         ],
         'user' => [],
         'beta' => [
