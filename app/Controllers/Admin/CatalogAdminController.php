@@ -83,7 +83,7 @@ final class CatalogAdminController extends BaseController
 
         $modelId = (new ModelModel())->insert([
             'title' => trim((string) $this->request->getPost('title')),
-            'slug' => url_title((string) $this->request->getPost('title'), '-', true) . '-' . bin2hex(random_bytes(3)),
+            'slug' => $this->slugFromTitle((string) $this->request->getPost('title')),
             'description' => trim((string) $this->request->getPost('description')),
             'category' => trim((string) $this->request->getPost('category')),
             'tags' => trim((string) $this->request->getPost('tags')),
@@ -214,5 +214,14 @@ final class CatalogAdminController extends BaseController
         (new AuditService())->record('catalog.model.archived', 'model', $id, 'success', [], auth()->user()?->id);
 
         return redirect()->to(site_url('admin/catalogo'))->with('message', 'Modelo arquivado.');
+    }
+
+    private function slugFromTitle(string $title): string
+    {
+        $ascii = iconv('UTF-8', 'ASCII//TRANSLIT//IGNORE', trim($title));
+        $base = strtolower((string) preg_replace('/[^a-zA-Z0-9]+/', '-', $ascii ?: $title));
+        $base = trim($base, '-');
+
+        return ($base !== '' ? $base : 'modelo') . '-' . bin2hex(random_bytes(3));
     }
 }
